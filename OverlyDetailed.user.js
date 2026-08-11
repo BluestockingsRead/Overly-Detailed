@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         Naked Details
+// @name         Overly Detailed
 // @namespace    https://bluestockingsread.com/
-// @version      2.0.1
+// @version      2.1.0
 // @description  Automatically opens collapsed <details> elements, including ones added later. Includes per-site controls and manual open/close commands.
 // @author       Kiera
 // @match        *://*/*
@@ -12,23 +12,24 @@
 // @grant        GM_setValue
 // @grant        GM_getValue
 // @license      MIT
-// @homepageURL  https://github.com/BluestockingsRead/Naked-Details
-// @supportURL   https://github.com/BluestockingsRead/Naked-Details/issues
-// @downloadURL  https://raw.githubusercontent.com/BluestockingsRead/Naked-Details/main/NakedDetails.user.js
-// @updateURL    https://raw.githubusercontent.com/BluestockingsRead/Naked-Details/main/NakedDetails.user.js
+// @homepageURL  https://github.com/BluestockingsRead/Overly-Detailed
+// @supportURL   https://github.com/BluestockingsRead/Overly-Detailed/issues
+// @downloadURL  https://raw.githubusercontent.com/BluestockingsRead/Overly-Detailed/main/OverlyDetailed.user.js
+// @updateURL    https://raw.githubusercontent.com/BluestockingsRead/Overly-Detailed/main/OverlyDetailed.user.js
 // ==/UserScript==
 
 /* ===================================================================
-    ._   _. |   _   _|    _|  _ _|_  _. o |  _
-    | | (_| |< (/_ (_|   (_| (/_ |_ (_| | | _>
+     _      _  ._ |       _|  _ _|_  _. o |  _   _|
+    (_) \/ (/_ |  | \/   (_| (/_ |_ (_| | | (/_ (_|
+                    /
 
     ╭─────────────────────────────────────────────────────────────╮
-          📂 file:       NakedDetails.user.js
-          💾 project:    Naked Details
-          👩‍💻 dev:        Kiera <github.com/BluestockingsRead>
-          🌱 created:    2024-05-15
-          ✍️ modified:   2026-08-05
-          📄 license:    MIT
+        📂 file:       OverlyDetailed.user.js
+        💾 project:    Overly Detailed
+        👩‍💻 dev:        Kiera <github.com/BluestockingsRead>
+        🌱 created:    2024-05-15
+        ✍️ modified:   2026-08-11
+        📄 license:    MIT
     ╰─────────────────────────────────────────────────────────────╯
 =================================================================== */
 

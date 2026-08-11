@@ -1,8 +1,8 @@
-# Naked Details
+# Overly Detailed
 
 > Every `<details>` on the page, already open. 📂
 
-**Naked Details** is a tiny userscript that expands collapsed `<details>`
+**Overly Detailed** is a tiny userscript that expands collapsed `<details>`
 elements, so you can read, search, copy, or print the whole page without
 opening each section by hand.
 
@@ -21,7 +21,7 @@ any site from your userscript manager's menu.
 1. Install a userscript manager:
    [Tampermonkey](https://www.tampermonkey.net/) and
    [Violentmonkey](https://violentmonkey.github.io/) both work.
-2. **[Install Naked Details ⬇️](https://raw.githubusercontent.com/BluestockingsRead/Naked-Details/main/NakedDetails.user.js)**
+2. **[Install Overly Detailed ⬇️](https://raw.githubusercontent.com/BluestockingsRead/Overly-Detailed/main/OverlyDetailed.user.js)**
 
 Your userscript manager will show its usual installation prompt. After that,
 updates can be handled automatically through the manager.
@@ -70,7 +70,7 @@ disabled.
 
 ## 💻 Compatibility
 
-Naked Details should work in modern Chromium- and Firefox-based browsers with
+Overly Detailed should work in modern Chromium- and Firefox-based browsers with
 a compatible userscript manager.
 
 The script uses:
@@ -89,7 +89,7 @@ Tampermonkey and Violentmonkey support the required userscript APIs.
 `<details>` elements.
 
 It's useful for checking that the script still behaves correctly after a
-change—or for seeing what Naked Details does before trying it on a real site.
+change—or for seeing what Overly Detailed does before trying it on a real site.
 
 To test the demo directly from your computer, you may need to enable
 **Allow access to file URLs** for your userscript manager in the browser's
@@ -98,7 +98,7 @@ pages without that permission.
 
 ## 🔒 Privacy
 
-Naked Details collects nothing and sends nothing.
+Overly Detailed collects nothing and sends nothing.
 
 There are:
 
@@ -114,4 +114,4 @@ and it never leaves the browser.
 
 ## 📜 License
 
-Naked Details is licensed under the MIT License. See [LICENSE](LICENSE).
+Overly Detailed is licensed under the MIT License. See [LICENSE](LICENSE).
