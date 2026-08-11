@@ -23,6 +23,8 @@ any site from your userscript manager's menu.
    [Violentmonkey](https://violentmonkey.github.io/) both work.
 2. **[Install Overly Detailed ⬇️](https://raw.githubusercontent.com/BluestockingsRead/Overly-Detailed/main/OverlyDetailed.user.js)**
 
+   Prefer a userscript directory? **[Install from Greasy Fork](https://greasyfork.org/en/scripts/590922-overly-detailed)**.
+
 Your userscript manager will show its usual installation prompt. After that,
 updates can be handled automatically through the manager.
 

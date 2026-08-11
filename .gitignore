@@ -1,23 +1,45 @@
 # ===================================================================
 # 📁 Directory Defaults
 # ===================================================================
-# Nothing is tracked unless it's named.
 
+# Nothing is tracked unless explicitly allowed below.
 *
 
 
 # ===================================================================
-# ✅ What actually ships
+# ⚙️ Repository Files
 # ===================================================================
-# Adding a file to the repo means adding it here first.
-#
-# Note for later: `*` excludes directories too, and git won't look
-# inside an excluded one. A future `docs/` needs `!docs/` before
-# `!docs/**` will do anything.
 
 !.gitignore
 !.gitattributes
 !LICENSE
+
+
+# ===================================================================
+# 📝 Documentation
+# ===================================================================
+
 !README.md
+
+# Public documentation.
+# The parent directory must be unignored before its contents.
+!docs/
+!docs/**/
+
+
+# Greasy Fork listing information.
+!docs/greasyfork.md
+
+
+# ===================================================================
+# 📜 Userscript
+# ===================================================================
+
 !OverlyDetailed.user.js
+
+
+# ===================================================================
+# 🧪 Demo
+# ===================================================================
+
 !demo.html
