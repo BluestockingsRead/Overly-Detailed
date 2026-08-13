@@ -16,6 +16,9 @@ building the page when they claim they have.
 Automatic opening is enabled by default. It can be disabled separately for
 any site from your userscript manager's menu.
 
+**[Try the live demo →](https://bluestockingsread.github.io/Overly-Detailed/)**
+No installation required.
+
 ## 🚀 Install
 
 1. Install a userscript manager:
@@ -32,6 +35,8 @@ updates can be handled automatically through the manager.
 
 - Opens every `<details>` element once the page is ready.
 - Watches for new ones, covering lazy-loaded and infinite-scroll content.
+- **Opens exclusive accordions in full**, including groups where the browser
+  normally allows only one section open at a time.
 - **Leaves your clicks alone.** Anything you close by hand stays closed.
 - Remembers whether automatic opening is enabled or disabled for each site.
 - Provides commands to open or close everything manually at any time.
@@ -41,7 +46,6 @@ something a half-second after you deliberately closed it.
 
 ## 🔍 Handy for
 
-- Searching long pages more predictably with Ctrl+F
 - Reading documentation without opening dozens of sections
 - Printing or saving complete pages as PDFs
 - Copying full FAQs, changelogs, or troubleshooting guides into notes
@@ -52,11 +56,11 @@ something a half-second after you deliberately closed it.
 
 Three commands are available from your userscript manager's menu:
 
-| Command | What it does |
-|---|---|
-| **Open all details on this page** | Performs a one-time sweep of the current page. Handy when automatic opening is disabled or something slipped through. |
-| **Close all details on this page** | Collapses every currently open `<details>` element. The undo button. |
-| **Auto-open for this site: ON/OFF** | Toggles automatic opening for the current site and remembers the preference. The label shows the current state. |
+| Command                             | What it does                                                                                                          |
+| ----------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| **Auto-open for this site: ON/OFF** | Toggles automatic opening for the current site and remembers the preference. The label shows the current state.       |
+| **Open all details on this page**   | Performs a one-time sweep of the current page. Handy when automatic opening is disabled or something slipped through. |
+| **Close all details on this page**  | Collapses every currently open `<details>` element. The undo button.                                                  |
 
 ### Per-site preferences
 
@@ -70,6 +74,21 @@ else continues working normally.
 The two manual commands remain available even when automatic opening is
 disabled.
 
+### Exclusive accordions
+
+Some sites group sections together with a shared `name`, so opening one closes
+the others. The browser enforces that itself, which means opening every section
+in turn isn't enough. Each one would shut the last on its way in.
+
+Overly Detailed sets the grouping aside while it works, then hands it back when
+you choose **Close all details on this page**. After that the accordion behaves
+exactly the way the site intended.
+
+Note: the grouping stays set aside until that command runs. Collapsing
+the sections by hand won't bring the exclusive behavior back on its own, so
+reach for **Close all** (or reload) if you want the site's accordion returned
+mid-visit.
+
 ## 💻 Compatibility
 
 Overly Detailed should work in modern Chromium- and Firefox-based browsers with
@@ -77,26 +96,48 @@ a compatible userscript manager.
 
 The script uses:
 
-- `<details>`
-- `MutationObserver`
-- `GM_registerMenuCommand`
-- `GM_setValue`
-- `GM_getValue`
+* `<details>`
+* `MutationObserver`
+* `GM_registerMenuCommand`
+* `GM_unregisterMenuCommand`
+* `GM_setValue`
+* `GM_getValue`
 
 Tampermonkey and Violentmonkey support the required userscript APIs.
 
-## 🧪 Demo page
+Exclusive accordions (`<details name>`) are a newer addition to the platform.
+On a browser too old to support them there's simply no grouping to work
+around, and everything else behaves the same.
 
-[`demo.html`](demo.html) contains static, nested, and dynamically inserted
-`<details>` elements.
+## 🧪 Live demo & stress test
 
-It's useful for checking that the script still behaves correctly after a
-change—or for seeing what Overly Detailed does before trying it on a real site.
+### Live demo
 
-To test the demo directly from your computer, you may need to enable
-**Allow access to file URLs** for your userscript manager in the browser's
-extension settings. Userscript managers cannot normally modify `file://`
-pages without that permission.
+**[Try Overly Detailed in your browser](https://bluestockingsread.github.io/Overly-Detailed/)**
+without installing anything.
+
+The demo loads the same `OverlyDetailed.user.js` file you'd install. A small
+browser shim stands in for the userscript-manager APIs, turning the real menu
+commands into page buttons and giving the script temporary storage for the
+tab.
+
+You can try automatic opening, manual open/close commands, nested sections,
+dynamically added content, and the script's leave-your-clicks-alone behavior.
+
+### Developer stress test
+
+[`stress-test.html`](https://bluestockingsread.github.io/Overly-Detailed/stress-test.html)
+is the less-friendly sibling: a developer test fixture for checking that the
+installed userscript still behaves correctly across static, nested, delayed,
+dynamically inserted, and exclusively grouped `<details>` elements.
+
+It also exercises manual closing, menu commands, per-site auto-open behavior,
+intentionally pre-opened sections, and whether exclusive grouping is handed
+back afterwards.
+
+When opening the stress test directly from your computer, your userscript
+manager may need permission to access `file://` URLs. Userscript managers
+cannot normally modify local pages without that permission.
 
 ## 🔒 Privacy
 
@@ -106,13 +147,13 @@ There are:
 
 - No analytics
 - No telemetry
-- No network requests
+- No script-initiated network requests
 - No stored page content or browsing history
 
-Nothing is saved at all until you change something. Browsing with the script
-installed writes nothing, ever. Using the auto-open toggle stores a single
-on/off flag for that one hostname, held **locally** by your userscript manager,
-and it never leaves the browser.
+Overly Detailed saves nothing until you change something. Simply browsing with
+the script installed doesn't write any page data or browsing history. Using the
+auto-open toggle stores a single on/off flag for that one hostname, held
+**locally** by your userscript manager, and it never leaves the browser.
 
 ## 📜 License
 
