@@ -327,13 +327,13 @@
     /* --- Section 8: an exclusive group, added late ---------------------- */
 
     /*
-    * Use setAttribute rather than the `name` property so this explicitly
-    * creates the DOM attribute OD inspects, without relying on support for
-    * `HTMLDetailsElement.name` property reflection.
-    *
-    * Each press gets its own group name, so repeat presses build separate
-    * accordions instead of one growing one.
-    */
+     * Use setAttribute rather than the `name` property so this explicitly
+     * creates the DOM attribute OD inspects, without relying on support for
+     * `HTMLDetailsElement.name` property reflection.
+     *
+     * Each press gets its own group name, so repeat presses build separate
+     * accordions instead of one growing one.
+     */
     let accordions = 0;
 
     document.getElementById('add-exclusive').addEventListener('click', () => {

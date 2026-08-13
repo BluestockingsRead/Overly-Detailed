@@ -1,7 +1,7 @@
 > Every `<details>` on the page, already open. 📂
 
 **Overly Detailed** is a tiny userscript that automatically expands the
-collapsed `<details>`  sections commonly found in FAQs, documentation,
+collapsed `<details>` sections commonly found in FAQs, documentation,
 changelogs, troubleshooting guides, spoilers, and other content hidden behind
 little triangles like `▶`.
 
