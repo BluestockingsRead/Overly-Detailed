@@ -192,6 +192,64 @@
     </li>
   </ul>
 
+  <h2><span class="test-number">TEST 07</span> Exclusive Accordions: <em><del>There Can Be Only One</del></em></h2>
+
+  <p class="note">
+    Native <code>&lt;details name&gt;</code> grouping
+    permits only one section to remain open at a time.
+  </p>
+
+  <details name="exclusive-test">
+    <summary>Exclusive accordion — Section 1</summary>
+    <p>If all-details mode works, I should remain visible.</p>
+  </details>
+
+  <details name="exclusive-test">
+    <summary>Exclusive accordion — Section 2</summary>
+    <p>I normally close Section 1 when opened.</p>
+  </details>
+
+  <details name="exclusive-test">
+    <summary>Exclusive accordion — Section 3</summary>
+    <p>All three should be visible when Overly Detailed overrides the accordion.</p>
+  </details>
+
+  <p class="note">
+    <strong>Restore check:</strong>
+    Choose <strong>Close all details on this page</strong>, then open Section 1
+    followed by Section 2. Section 1 should close automatically, confirming
+    that the original exclusive grouping was restored.
+  </p>
+
+
+  <h2><span class="test-number">TEST 08</span> Exclusive, and late to the party</h2>
+
+  <p class="note">
+    Both advertised features at once. The group arrives inside a wrapper
+    after the page has settled, so the watcher is handed the wrapper rather
+    than the sections and has to free each one on the way down. All three
+    should turn up open.
+  </p>
+
+  <p class="note">
+    Each press builds a separate group, so a second press is also a check
+    that two neutralized accordions don't collapse into one.
+  </p>
+
+  <p>
+    <button id="add-exclusive" type="button">Add an exclusive group</button>
+  </p>
+
+  <div id="late-exclusive" aria-live="polite"></div>
+
+  <p class="note">
+    <strong>Restore check:</strong>
+    The same as TEST 07, on a group that was never in the original markup.
+    After <strong>Close all details on this page</strong>, each added group
+    should go back to opening one section at a time, independently of the
+    others.
+  </p>
+
   <script>
     // Builds a <details> the same way a real site would: created detached,
     // then appended, so the watcher sees it arrive as a new node.
@@ -266,6 +324,37 @@
       document.getElementById('ondemand').append(wrapper);
     });
 
+    /* --- Section 8: an exclusive group, added late ---------------------- */
+
+    /*
+    * Use setAttribute rather than the `name` property so this explicitly
+    * creates the DOM attribute OD inspects, without relying on support for
+    * `HTMLDetailsElement.name` property reflection.
+    *
+    * Each press gets its own group name, so repeat presses build separate
+    * accordions instead of one growing one.
+    */
+    let accordions = 0;
+
+    document.getElementById('add-exclusive').addEventListener('click', () => {
+      accordions += 1;
+
+      const wrapper = document.createElement('div');
+      const groupName = `late-accordion-${accordions}`;
+
+      for (let n = 1; n <= 3; n += 1) {
+        const section = makeSection(
+          `Late accordion #${accordions}, section ${n}`,
+          'Grouped with the two sections beside it. Left alone, only one of '
+          + 'the three would have survived arrival.',
+        );
+
+        section.setAttribute('name', groupName);
+        wrapper.append(section);
+      }
+
+      document.getElementById('late-exclusive').append(wrapper);
+    });
   </script>
 
 </body>
