@@ -39,7 +39,38 @@
 
 
 # ===================================================================
-# 🧪 Demo
+# 🌐 Live Demo
 # ===================================================================
 
-!demo.html
+# Served from GitHub Pages. The shim stands in for the
+# userscript-manager APIs so index.html can run the real script.
+!index.html
+!gm-shim.js
+
+
+# ===================================================================
+# 🧐 Stress Test
+# ===================================================================
+
+# Developer test fixture.
+!stress-test.html
+
+
+# ===================================================================
+# 🎨 Styles, Icon & Fonts
+# ===================================================================
+
+# Shared look for the demo & stress-test pages.
+!styles.css
+
+# Tab icon for both pages. Adapts to light and dark on its own.
+!favicon.svg
+
+# Self-hosted so neither page reaches out to a CDN.
+# The parent directory must be unignored before its contents.
+!fonts/
+!fonts/**/
+
+!fonts/fonts.css
+!fonts/*.woff2
+!fonts/licenses/*.txt

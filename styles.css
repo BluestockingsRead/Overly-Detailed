@@ -1,0 +1,688 @@
+/* ===================================================================
+     _      _  ._ |       _|  _ _|_  _. o |  _   _|
+    (_) \/ (/_ |  | \/   (_| (/_ |_ (_| | | (/_ (_|
+                    /
+
+    ╭─────────────────────────────────────────────────────────────╮
+          📂 file:       styles.css
+          💾 project:    Overly Detailed
+          👩‍💻 dev:        Kiera <github.com/BluestockingsRead>
+          🌱 created:    2026-08-11
+          ✍️ modified:   2026-08-13
+          📄 license:    MIT
+    ╰─────────────────────────────────────────────────────────────╯
+
+    Shared look for: 
+      - index.html (the live demo) and
+      - stress-test.html (the developer test fixture). 
+
+    Style: folded paper, pine ink, + warm vellum for the dog-eared corner
+    of closed sections. Corners flatten out on open = a visual cue to the
+    state change.
+
+        [🗝️ KEY: | "☀️🌒"=light/dark pair | "A11y"=accessibility
+        | "👓"=vision | "🫨"=reduced motion | ]
+=================================================================== */
+
+/* #region === ☀️🌒 Palette ================================ */
+
+:root {
+  color-scheme: light dark;
+
+  /* === 📄 Paper - ☀️🌒 ======================= */
+  --bg: light-dark(oklch(94% 0.006 235), oklch(22% 0.018 245));
+  --card: light-dark(oklch(99.5% 0.002 235), oklch(26.5% 0.02 245));
+  --line: light-dark(oklch(87% 0.012 230), oklch(34% 0.022 240));
+
+  /* === ✒️ Ink - ☀️🌒 ========================= */
+  --fg: light-dark(oklch(26% 0.03 235), oklch(92% 0.01 210));
+  --muted: light-dark(oklch(48% 0.028 225), oklch(70% 0.02 215));
+  --accent: light-dark(oklch(45% 0.105 172), oklch(80% 0.115 172));
+
+  /*
+	* Two stops so the flap reads as paper catching light rather than
+	* a flat triangle someone pasted on.
+	*/
+  --fold-face: light-dark(oklch(97% 0.025 48), oklch(77% 0.01 48));
+  --fold-shade: light-dark(oklch(86% 0.035 42), oklch(66% 0.025 42));
+  --fold-edge: light-dark(oklch(82% 0.02 40), oklch(68% 0.01 42));
+
+  /* === ⚠️ Already-installed notice - ☀️🌒 ==== */
+  --warn-bg: light-dark(oklch(96% 0.035 85), oklch(29% 0.038 80));
+  --warn-line: light-dark(oklch(78% 0.09 78), oklch(55% 0.08 78));
+
+  /* === 🧐 Stress-Test Only==================== */
+  --test-fg: light-dark(oklch(45% 0.1 44.27), oklch(80% 0.1 44.27));
+}
+
+/* #endregion === ☀️🌒 Palette ============================= */
+
+/* #region === 🔡 Type & box tokens ======================== */
+
+:root {
+  --font-body: "Atkinson Hyperlegible Next", system-ui, sans-serif;
+  --font-display: "Space Grotesk", "Atkinson Hyperlegible Next", sans-serif;
+  --font-mono: "Courier Prime", ui-monospace, monospace;
+
+  --border-hair: 1px solid var(--line);
+
+  /* ↓ Nested sections borrow the extension's child-options treatment */
+  --border-dots: 2px dotted var(--line);
+
+  /*
+	* A11y 👓: focus rings sit *inside* their element. The cards are
+	* clipped to make the dog-ear, and a clip-path trims anything drawn
+	* outside the box, corner outlines included. Inset keeps the ring
+	* whole in every state.
+	*/
+  --focus-ring: 2px solid var(--accent);
+  --focus-inset: -3px;
+}
+
+/* #endregion === 🔡 Type & box tokens ===================== */
+
+/* #region === 📄 Page & typography ======================== */
+
+body {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+  background: var(--bg);
+  color: var(--fg);
+  font: 400 1.0625rem/1.65 var(--font-body);
+}
+
+/*
+* Two pages share this stylesheet and the same h1, which is a good way
+* to lose track of which one is opened. The eyebrow says so outright.
+*/
+.eyebrow {
+  margin: 0 0 0.5rem;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 1.55rem + 2.4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+}
+
+/*
+* The dashed rule under a section heading is the same crease the cards
+* fold along, run out flat. Replaces the double rule the pages used to
+* borrow from the extension's hr.
+*/
+h2 {
+  margin-top: 3rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px dashed var(--line);
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+.tagline {
+  margin-top: 0;
+  color: var(--muted);
+  font-size: 1.1rem;
+}
+
+.note {
+  margin: 0.4rem 0 1rem;
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+.demo-aside {
+  font-style: italic;
+}
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+code {
+    padding: 0.05em 0.3em;
+    border-radius: 0.2rem;
+    background: color-mix(in oklch, var(--fg) 6%, transparent);
+    color: inherit;
+    font-family: var(--font-mono);
+    font-size: 0.92em;
+}
+
+ul {
+  padding-left: 1.2rem;
+}
+
+li {
+  margin-bottom: 0.4rem;
+}
+
+li::marker {
+  color: var(--accent);
+}
+
+/* #endregion === 📄 Page & typography ===================== */
+
+/* #region === ✂️ The dog-ear ============================== */
+
+/*
+* Registering --fold is what makes it animatable; an unregistered
+* custom property would snap between values instead of easing.
+* `inherits: true` matters too, since ::after reads the same value to
+* size the flap. Nested cards set their own, so nothing leaks downward.
+*/
+@property --fold {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 0px;
+}
+
+details {
+  --fold: 1.6rem;
+
+  position: relative;
+  margin: 0.7rem 0;
+  padding: 0.6rem 0.9rem;
+  transition: --fold 220ms ease, border-color 220ms ease;
+  border: var(--border-hair);
+  background: var(--card);
+
+  /* The corner is actually missing from the card's silhouette. */
+  clip-path: polygon(0 0,
+      calc(100% - var(--fold)) 0,
+      100% var(--fold),
+      100% 100%,
+      0 100%);
+}
+
+/*
+* The turned-down flap: the corner reflected back across the crease,
+* showing the underside of the page. Its hypotenuse lands exactly on
+* the cut above, so the two edges meet cleanly at any --fold size.
+*/
+details::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: var(--fold);
+  height: var(--fold);
+  clip-path: polygon(0 0, 100% 100%, 0 100%);
+
+  /* The two straight legs are the folded page's own cut edges. */
+  border-bottom: 1px solid var(--fold-edge);
+  border-left: 1px solid var(--fold-edge);
+  border-radius: 0.3rem;
+  background: linear-gradient(135deg,
+      var(--fold-face),
+      var(--fold-shade));
+  pointer-events: none;
+}
+
+details[open] {
+  --fold: 0rem;
+  border-color: color-mix(in oklch, var(--accent) 35%, var(--line));
+}
+
+/*
+* Nested ones step inward so the depth is obvious at a glance, and the
+* dotted left edge marks them as children rather than siblings; the
+* same cue .child-options uses in the extension popup.
+*/
+details details {
+  margin-left: 1.25rem;
+  border-left: var(--border-dots);
+}
+
+details>*:not(summary) {
+  color: var(--muted);
+}
+
+details>*:last-child {
+  margin-bottom: 0;
+}
+
+/* #endregion === ✂️ The dog-ear =========================== */
+
+/* #region === ▸ Summary & its marker ====================== */
+
+summary {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.6em;
+  align-items: baseline;
+
+  /* Room for the flap, so a long summary never runs under it. */
+  padding-right: 1.4rem;
+  color: var(--fg);
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+}
+
+/* Chrome and Safari need this one by name to drop the default triangle. */
+summary::-webkit-details-marker {
+  display: none;
+}
+
+/*
+* A caret built from two borders rather than a glyph, so it lines up
+* the same way whatever the font is doing. Standard right when shut,
+* down when open.
+*/
+summary::before {
+  content: "";
+  width: 0.42em;
+  height: 0.42em;
+  transform: translateY(-0.08em) rotate(-45deg);
+  transition: transform 220ms ease;
+  border-right: 2px solid var(--accent);
+  border-bottom: 2px solid var(--accent);
+}
+
+details[open]>summary::before {
+  transform: translateY(0.06em) rotate(45deg);
+}
+
+/* #endregion === ▸ Summary & its marker =================== */
+
+/* #region === 🎛️ Buttons ================================== */
+
+button {
+  margin: 0.5rem 0.3rem 0.2rem 0;
+  padding: 0.45rem 0.95rem;
+  transition: transform 0.2s ease, background 0.2s ease;
+  border: 1px solid var(--accent);
+  border-radius: 0.3rem;
+  background: transparent;
+  color: var(--accent);
+  font: 500 0.98rem/1.4 var(--font-body);
+  cursor: pointer;
+}
+
+button:hover {
+  background: color-mix(in oklch, var(--accent) 12%, transparent);
+}
+
+button:focus-visible,
+summary:focus-visible,
+a:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* Only the summary sits inside a clipped card, so only it needs inset. */
+summary:focus-visible {
+  outline-offset: var(--focus-inset);
+}
+
+a:focus-visible {
+  border-radius: 0.15rem;
+}
+
+.menu-command,
+.add-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* The third command doubles as the toggle, so it earns the emphasis. */
+.menu-command:first-of-type {
+  border-width: 2px;
+  font-weight: 700;
+}
+
+.menu-command:not(:first-of-type) {
+    border-color:
+        color-mix(in oklch, var(--fg) 18%, var(--line));
+    color: var(--fg);
+}
+
+.menu-command:not(:first-of-type):hover {
+    background:
+        color-mix(in oklch, var(--fg) 6%, transparent);
+}
+
+.menu-command:hover {
+  transform: scale(1.02);
+}
+
+/*
+* Scaffolding, not product. Keeping these visually quieter stops them
+* being mistaken for menu commands the installed script provides.
+*/
+.demo-control {
+  border-style: dashed;
+  border-color: var(--line);
+  color: var(--muted);
+}
+
+.demo-control:hover {
+  background: color-mix(in oklch, var(--muted) 10%, transparent);
+}
+
+.demo-control:focus-visible {
+  outline-color: var(--muted);
+}
+
+/* #endregion === 🎛️ Buttons =============================== */
+
+/* #region === 📦 Panels ==================================== */
+
+/*
+* The control panel follows the user down the page; the whole point
+* is flipping the toggle and watching everything below it change.
+*/
+.controls {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(15rem, auto);
+    gap: 0.55rem 1.4rem;
+    align-items: start;
+
+    margin: 1.75rem 0;
+    padding: 0.9rem 1.1rem;
+
+    border: var(--border-hair);
+    border-bottom-color:
+        color-mix(in oklch, var(--fg) 18%, var(--line));
+    border-left: 3px solid var(--accent);
+    border-radius: 0.3rem;
+
+    background: var(--card);
+
+    /* Separates sticky controls from content beneath */
+    box-shadow:
+        0 0.8rem 1rem -1rem
+        color-mix(in oklch, var(--fg) 90%, transparent);
+}
+
+.controls h2,
+.controls-note {
+    grid-column: 1 / -1;
+}
+
+.controls h2 {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.controls-note {
+    margin: 0;
+}
+.controls-guide {
+    font-size: 0.96rem;
+}
+
+.controls-guide > p {
+    margin: 0 0 0.4rem;
+}
+
+/* bc the steps only make sense in order. */
+.controls-guide ol {
+    margin: 0;
+    padding-left: 1.4rem;
+}
+
+.controls-guide li {
+    transition:
+        opacity 180ms ease,
+        color 180ms ease;
+}
+
+/*
+ * A11y 👓: --muted alone carries the "done" look. Going too faded fails WCAG,
+ * plus ~~strikethrough~~ already does the talking.
+ */
+.controls-guide li.is-complete {
+    color: var(--muted);
+    text-decoration: line-through;
+    text-decoration-thickness: 1px;
+}
+
+.controls-guide li.is-complete::marker {
+    color: var(--muted);
+}
+
+/* A TLDR Install link */
+.controls-install-link {
+    margin: 0.7rem 0 0;
+    color: var(--muted);
+    font-size: 0.88rem;
+}
+
+#menu-commands {
+    display: grid;
+    gap: 0.35rem;
+    justify-items: start;
+}
+
+.controls-actions .menu-command,
+.controls-actions .demo-control {
+    margin: 0;
+}
+
+.controls-actions .demo-control {
+    margin-top: 0.5rem;
+}
+
+.banner {
+  margin: 1.75rem 0;
+  padding: 0.85rem 1.1rem;
+  border: 1px solid var(--warn-line);
+  border-left: 3px solid var(--warn-line);
+  border-radius: 0.3rem;
+  background: var(--warn-bg);
+  font-size: 0.94rem;
+}
+
+.banner p {
+  margin: 0.45rem 0 0;
+}
+
+.banner :first-child {
+  margin-top: 0;
+}
+
+.install {
+    margin-top: 3.5rem;
+    padding: 1.3rem 1.5rem;
+
+    border: var(--border-hair);
+    border-left: 3px solid var(--accent);
+    border-radius: 0.3rem;
+
+    background:
+        color-mix(in oklch, var(--accent) 3%, var(--card));
+}
+
+.install h2 {
+    margin: 0 0 1.25rem;
+    padding-bottom: 0.55rem;
+    border-bottom: 1px dashed var(--line);
+}
+
+.install> :last-child {
+  margin-bottom: 0;
+}
+
+.advanced-install {
+    margin-top: 1.75rem;
+    padding-top: 1.25rem;
+    border-top: 1px dashed var(--line);
+}
+
+.install .privacy {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px dotted var(--line);
+}
+
+/* #endregion === 📦 Panels ================================= */
+
+/* #region === 🦶 Footer ==================================== */
+
+footer {
+  margin-top: 3.5rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--line);
+  border-radius: 0.3rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+footer p {
+  margin: 0 0 0.35rem;
+}
+
+/* #endregion === 🦶 Footer ================================= */
+
+/* #region ===🧐 Stress-Test Only =========================== */
+
+/*
+ * "Stress Test", same tone the EXPECTED RESULT label uses, so the
+ * two "you are on the test fixture" cues match. Lighter weight than the
+ * name it follows: this is the qualifier, not the title.
+ */
+.test-label {
+    color: var(--test-fg);
+    font-weight: 500;
+}
+
+/* Small, set apart; the way back is findable but not loud. */
+.test-nav {
+    margin: 1.25rem 0 0;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+}
+
+.test-number {
+    margin-right: 0.5rem;
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 0.72em;
+    letter-spacing: 0.08em;
+}
+
+.test-status {
+    margin: 1.75rem 0 1rem;
+    padding: 0.9rem 1.1rem;
+
+    border: var(--border-hair);
+    border-left: 3px solid var(--fold-edge);
+    border-radius: 0.3rem;
+
+    background:
+        color-mix(in oklch, var(--fold-face) 10%, var(--card));
+}
+
+.test-status-label {
+    margin: 0 0 0.55rem;
+    color: var(--test-fg);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.test-status p {
+    margin: 0 0 0.4rem;
+}
+
+.test-status .test-quick-check {
+    margin: 0.75rem 0 0;
+    padding-top: 0.65rem;
+    border-top: 1px dashed var(--line);
+}
+
+/* #endregion ===🧐 Stress-Test Only ======================== */
+
+/* #region === 📱 Narrow screens ============================ */
+
+@media (width <= 48rem) {
+    .controls {
+        position: static;
+        grid-template-columns: 1fr;
+    }
+
+    .controls h2,
+    .controls-note {
+        grid-column: auto;
+    }
+
+    .controls-actions {
+        min-width: 0;
+    }
+}
+
+@media (width <=30rem) {
+  body {
+    padding: 1.75rem 1rem 3rem;
+  }
+
+  details {
+    padding: 0.55rem 0.75rem;
+  }
+
+  .install {
+    padding: 1.1rem 1rem;
+  }
+
+  .controls {
+    position: static;
+  }
+}
+
+/* #endregion === 📱 Narrow screens ========================= */
+
+/* #region === 🫨 Reduced motion (a11y) ===================== */
+
+/*
+* The fold still appears and disappears; it just stops easing. It's a
+* state indicator first and an animation second.
+*/
+@media (prefers-reduced-motion: reduce) {
+
+  details,
+  summary::before,
+  button {
+    transition: none;
+  }
+
+  .menu-command:hover {
+    transform: none;
+  }
+}
+
+/* #endregion === 🫨 Reduced motion (a11y) ================== */

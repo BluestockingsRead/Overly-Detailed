@@ -6,3 +6,13 @@
 # between CRLF and LF and every edit shows up as a whole-file rewrite.
 
 * text=auto eol=lf
+
+
+# ===================================================================
+# 🔤 Fonts
+# ===================================================================
+# Binary files, so the line-ending rule above has no business here.
+# Git's auto-detection gets this right anyway; saying it out loud
+# means a stray misconfiguration can't corrupt a woff2 on checkout.
+
+*.woff2 binary

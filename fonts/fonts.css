@@ -1,0 +1,100 @@
+/* ===================================================================
+     _      _  ._ |       _|  _ _|_  _. o |  _   _|
+    (_) \/ (/_ |  | \/   (_| (/_ |_ (_| | | (/_ (_|
+                    /
+
+    ╭─────────────────────────────────────────────────────────────╮
+          📂 file:       fonts/fonts.css
+          💾 project:    Overly Detailed
+          👩‍💻 dev:        Kiera <github.com/BluestockingsRead>
+          🌱 created:    2026-08-11
+          ✍️ modified:   2026-08-11
+          📄 license:    MIT (the fonts themselves: see licenses/)
+    ╰─────────────────────────────────────────────────────────────╯
+
+    Three faces, self-hosted. Nothing here calls out to a CDN, which
+    keeps the demo honest about "sends nothing, phones nowhere" and
+    means the pages look right opened straight off disk.
+
+    * Declarations lifted from the GreatReads extension, size-adjust
+      values and all, so the two projects render at matching sizes.
+=================================================================== */
+
+/* #region Atkinson Hyperlegible Next ===================== */
+
+/* === Atkinson Hyperlegible Next — Variable, Normal === */
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  font-style: normal;
+  font-weight: 200 800;   /* full axis */
+  src: url("../fonts/AtkinsonHyperlegibleNext-VariableFont_wght.woff2") format("woff2");
+  font-display: swap;
+  size-adjust: 99.4%;
+}
+
+/* === Atkinson Hyperlegible Next — Variable, Italic === */
+@font-face {
+  font-display: swap;
+  font-family: "Atkinson Hyperlegible Next";
+  font-style: italic;
+  font-weight: 200 800;   /* full axis */
+  src: url("../fonts/AtkinsonHyperlegibleNext-Italic-VariableFont_wght.woff2") format("woff2");
+  size-adjust: 99.4%;
+}
+
+/* #endregion Atkinson Hyperlegible Next ================== */
+
+/* #region Space Grotesk ================================== */
+
+/* === Space Grotesk — Variable, Normal === */
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 300 700;   /* full axis */
+  src: url("../fonts/SpaceGrotesk-VariableFont_wght.woff2") format("woff2");
+  font-display: swap;
+  size-adjust: 95.8%;
+}
+
+/* #endregion Space Grotesk =============================== */
+
+/* #region Courier Prime ================================== */
+
+/* courier-prime-regular - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Courier Prime";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/CourierPrime-Regular.woff2") format("woff2");
+  size-adjust: 99.1%;
+}
+/* courier-prime-italic - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Courier Prime";
+  font-style: italic;
+  font-weight: 400;
+  src: url("../fonts/CourierPrime-Italic.woff2") format("woff2");
+  size-adjust: 99.1%;
+}
+/* courier-prime-700 - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Courier Prime";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/CourierPrime-Bold.woff2") format("woff2");
+  size-adjust: 99.1%;
+}
+/* courier-prime-700italic - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Courier Prime";
+  font-style: italic;
+  font-weight: 700;
+  src: url("../fonts/CourierPrime-BoldItalic.woff2") format("woff2");
+  size-adjust: 99.1%;
+}
+
+/* #endregion Courier Prime =============================== */

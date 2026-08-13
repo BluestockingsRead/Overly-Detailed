@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!--
+    📂 favicon.svg / Overly Detailed / MIT
+
+    The same closed-disclosure triangle the tagline uses, drawn as a path
+    rather than the ▶ glyph so it can't be swapped for a font's own idea
+    of one. Hex, not oklch: the accent tokens live in styles.css, which a
+    favicon never loads. Worth updating both together.
+  -->
+  <style>
+    svg { color: #00674e; }
+
+    @media (prefers-color-scheme: dark) {
+      svg { color: #64d6b5; }
+    }
+  </style>
+
+  <path d="M9.5 5.5 25.5 16 9.5 26.5Z"
+        fill="currentColor"
+        stroke="currentColor"
+        stroke-width="3"
+        stroke-linejoin="round" />
+</svg>

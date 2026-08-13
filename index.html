@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Overly Detailed &mdash; live demo</title>
+
+  <meta name="description" content="Try Overly Detailed in your browser. No installation required.">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <!-- ===================================================================
+     _      _  ._ |       _|  _ _|_  _. o |  _   _|
+    (_) \/ (/_ |  | \/   (_| (/_ |_ (_| | | (/_ (_|
+                    /
+
+    ╭─────────────────────────────────────────────────────────────╮
+          📂 file:       index.html
+          💾 project:    Overly Detailed
+          👩‍💻 dev:        Kiera <github.com/BluestockingsRead>
+          🌱 created:    2026-08-11
+          ✍️ modified:   2026-08-13
+          📄 license:    MIT
+    ╰─────────────────────────────────────────────────────────────╯
+
+    The live demo. Runs the real OverlyDetailed.user.js against stand-in
+    GM functions from gm-shim.js, so what visitors try here is the same
+    code they'd install.
+
+    ! Both scripts are classic and deferred, shim first. A `type="module"`
+      tag would hide the GM functions from the userscript.
+=================================================================== -->
+
+  <link rel="stylesheet" href="fonts/fonts.css">
+  <link rel="stylesheet" href="styles.css">
+
+  <script src="gm-shim.js" defer></script>
+  <script src="OverlyDetailed.user.js" defer></script>
+</head>
+
+<body>
+
+  <p class="eyebrow">Live demo</p>
+
+  <h1>Overly Detailed</h1>
+
+  <p class="tagline">
+    Stop clicking every little click-to-expand triangle <code>▶</code>.
+  </p>
+
+  <p>
+    Websites love to hide spoilers, FAQs, changelogs, and other useful
+    info behind little disclosure arrows <code>▶</code>. You've seen them
+    everywhere, and they're called HTML <code>&lt;details&gt;</code>
+    elements. But after clicking a bunch of them, you might just call them
+    <em>annoying.</em>
+  </p>
+
+  <p>
+    <strong>Overly Detailed</strong> unfolds them for you, including the ones
+    that only appear as you keep scrolling. This page runs the same tiny script
+    you'd install, so you can see if it's right for you without installing
+    anything first.
+  </p>
+
+  <p class="note demo-aside">
+    🛠️ How it works: a tiny shim (<code>gm-shim.js</code>) stands in for the
+    four userscript-manager APIs, so the script running here is the shipping
+    one, unchanged. See the <a href="https://github.com/BluestockingsRead/Overly-Detailed">README</a> for
+    more info.
+  </p>
+
+  <p>But wait, nothing here is open! That's on purpose. What's a "before and
+    after" without a proper "before"? This demo starts with everything annoyingly
+    hidden so you can watch Overly Detailed do its thing.</p>
+
+  <!-- Populated by gm-shim.js as the userscript registers its commands. -->
+  <div class="controls">
+    <h2>Test Drive</h2>
+
+    <p class="note controls-note">
+      The same three options <strong>Overly Detailed</strong>
+      adds to your userscript manager.
+    </p>
+
+    <div class="controls-guide">
+      <p>
+        <strong>Try it!</strong>
+      </p>
+
+      <ol>
+        <li id="step-start-off">
+          The first button shows
+          <strong>Auto-open for this site: OFF</strong>.
+        </li>
+
+        <li id="step-turn-on">
+          Turn it <strong>ON</strong>. You know you want to.
+        </li>
+
+        <li>
+          Ta-da! All <code>&lt;details&gt;</code> are now expanded 🪗.
+          This is what <strong>Overly Detailed</strong> does by default.
+        </li>
+      </ol>
+
+      <p class="controls-install-link">
+        Already sold? <a href="#install">Skip to install ↓</a>
+      </p>
+    </div>
+
+    <div class="controls-actions">
+      <div id="menu-commands"></div>
+
+      <button id="reset" class="demo-control" type="button">
+        Reset demo
+      </button>
+    </div>
+  </div>
+
+
+  <!-- A11y: unhidden by script rather than by anything the reader did. -->
+  <div class="banner" id="already-installed" role="status" hidden>
+    <p>
+      <strong>Looks like Overly Detailed is already installed here.</strong>
+    </p>
+
+    <p>
+      Something opened a section before the demo did, so your installed
+      copy may be doing its job a little too enthusiastically. Turn
+      Auto-open OFF for this site from your userscript manager, then
+      reload to watch the demo from the start.
+    </p>
+
+    <p>
+      Trying to stress-test your installed copy instead? Head to the
+      <a href="stress-test.html">Stress Test page</a>.
+    </p>
+  </div>
+
+
+  <h2>Sections that would normally need clicking</h2>
+
+  <p class="note">
+    An ordinary collapsed section, the kind a docs page might have a few
+    dozen of.
+  </p>
+
+  <details>
+    <summary>The whole page, all at once</summary>
+
+    <ul>
+      <li><strong>More reading, less clicking</strong> <em>(or Tab-Space-Tab-Space tedium)</em>
+        <br>Easily skim long FAQs, docs, logs, and other heavily collapsed pages.
+      </li>
+      <li><strong>Copying, web clipping, full-page screenshots?</strong>
+        <br>Faster, easier, and more complete.
+      </li>
+      <li><strong>Printing &amp; PDF</strong>
+        <br>No more redos because you forgot to open a block first.
+      </li>
+      <li><strong>Compare info without a degree in archaeology</strong>
+        <br>Changelog entries and FAQ answers can finally be on screen at the same time.
+      </li>
+    </ul>
+
+  </details>
+
+
+  <h2>Nested? No problem.</h2>
+
+  <details>
+    <summary>Outer level</summary>
+
+    <p>Sure, this is open. But why stop here?</p>
+
+    <details>
+      <summary>Middle level</summary>
+
+      <p>
+        <em>
+          Yo dawg, I heard you like details, so I put details in your
+          details!
+        </em>
+      </p>
+
+      <details>
+        <summary>Inner level</summary>
+
+        <p>
+          Nesting is handled properly, and you have reached Enlightenment*.
+        </p>
+
+        <p class="note">
+          <em>*NOTE: Enlightenment not guaranteed.</em>
+        </p>
+      </details>
+    </details>
+  </details>
+
+
+  <h2>What if more sections show up later?</h2>
+
+  <p class="note">
+    <strong>Try it:</strong> With Auto-open ON, press
+    <strong>Add a section</strong>.
+  </p>
+
+  <button id="add" class="add-section" type="button">
+    Add a section
+  </button>
+
+  <!-- A11y: says out loud that a section turned up, and whether it's open. -->
+  <div id="ondemand" aria-live="polite"></div>
+
+  <p class="note">
+    The new section arrives already open. Overly Detailed keeps watching
+    for new <code>&lt;details&gt;</code> elements even after the page has
+    loaded.
+  </p>
+
+
+  <h2>Your clicks stay yours</h2>
+
+  <p class="note">
+    With Auto-open ON, close the section below by hand, then press
+    <strong>Add a section</strong> above again. This one stays shut.
+  </p>
+
+  <details>
+    <summary>Close me, then add a section</summary>
+
+    <p>
+      Still closed? Good. This script respects boundaries. A script
+      watching the <code>open</code> attribute would reopen it half a
+      second later, which is less of a feature and more of a haunted
+      accordion.
+    </p>
+  </details>
+
+
+  <div class="install" id="install">
+    <h2>Install</h2>
+
+    <h3>New to userscripts? It's easy!</h3>
+
+    <ol>
+      <li>
+        Install either
+        <a href="https://www.tampermonkey.net/">Tampermonkey</a>
+        or
+        <a href="https://violentmonkey.github.io/">Violentmonkey</a>.
+      </li>
+
+      <li>
+        Click <strong>Install Overly Detailed</strong> on
+        <a href="https://greasyfork.org/en/scripts/590922-overly-detailed">
+          Greasy Fork
+        </a>.
+      </li>
+
+      <li>Approve the installation.</li>
+    </ol>
+
+    <p>
+      <strong>Done.</strong> It starts working automatically.
+    </p>
+
+    <h3 class="advanced-install">Already know what's up?</h3>
+
+    <p>You can also
+      <a href="https://raw.githubusercontent.com/BluestockingsRead/Overly-Detailed/main/OverlyDetailed.user.js">
+        install the <code>.user.js</code> directly from GitHub.
+      </a>
+    </p>
+
+    <p class="privacy">
+      <strong>Runs locally.</strong>
+      No tracking, no data collection, no script-initiated network requests.
+    </p>
+
+    <p class="note">
+      Installed, it runs on every site rather than just this one, and its
+      preferences live in your userscript manager instead of this tab.
+      Here, the demo's settings are remembered for this tab only;
+      installed, they're remembered per site.
+    </p>
+  </div>
+
+
+  <footer>
+    <p>
+      <a href="https://github.com/BluestockingsRead/Overly-Detailed">
+        Source on GitHub
+      </a>
+      &middot;
+      <a href="stress-test.html">Developer test page</a>
+      &middot;
+      MIT licensed
+    </p>
+
+    <p>Collects nothing, sends nothing, phones nowhere.</p>
+  </footer>
+
+
+  <!--
+        A quiet stand-in for a real section. Nothing here touches it while
+        auto-open is off, so anything that opens it came from outside.
+    -->
+  <details id="canary" hidden>
+    <summary>Canary</summary>
+  </details>
+
+
+  <script>
+    /*
+     * Inline and therefore first to run, ahead of the deferred scripts.
+     * That's deliberate: the canary observer wants to be watching before
+     * anything else gets a chance to open something.
+     */
+
+    /* --- Spotting an installed copy ---------------------------------- */
+
+    /*
+     * The @exclude lines in the userscript should keep an installed copy
+     * off this page, but excludes can be missed by a fork, an odd URL, or
+     * a manager with its own ideas.
+     *
+     * If the canary opens while this demo's own copy was expected to stay
+     * idle, something else is driving.
+     */
+    const canary = document.getElementById('canary');
+    const banner = document.getElementById('already-installed');
+    let userHasInteracted = false;
+
+    const watchCanary = new MutationObserver(() => {
+      /*
+       * If the demo itself started with Auto-open ON, its own userscript
+       * is expected to open the canary. That's not evidence of a second,
+       * installed copy.
+       */
+      const demoStartedWithAutoOpen =
+        window.overlyDetailedDemo?.autoOpenAtLoad === true;
+
+      if (userHasInteracted || demoStartedWithAutoOpen) {
+        watchCanary.disconnect();
+        return;
+      }
+
+      banner.hidden = false;
+      watchCanary.disconnect();
+    });
+
+    watchCanary.observe(canary, {
+      attributes: true,
+      attributeFilter: ['open'],
+    });
+
+    /*
+     * The watch deliberately has no time limit. An installed copy runs at
+     * document-idle, which on a slow connection lands whenever it lands,
+     * and a detector that has already given up is worse than none.
+     *
+     * Once someone uses the demo controls, opening the canary may simply
+     * be the expected result of their own action.
+     */
+    document.querySelector('.controls').addEventListener(
+      'click',
+      (event) => {
+        // Buttons only: the panel's install link changes nothing on the page.
+        if (event.target.closest('button')) userHasInteracted = true;
+      },
+      { capture: true },
+    );
+
+
+    /* --- Tutorial progress -------------------------------------------- */
+
+    const menuCommands = document.getElementById('menu-commands');
+    const stepStartOff = document.getElementById('step-start-off');
+    const stepTurnOn = document.getElementById('step-turn-on');
+
+    function updateTutorialProgress() {
+      const toggle = menuCommands.querySelector('.menu-command:first-child');
+
+      if (!toggle) return;
+
+      const autoOpenIsOn = toggle.textContent.includes(': ON');
+
+      stepStartOff.classList.toggle('is-complete', autoOpenIsOn);
+      stepTurnOn.classList.toggle('is-complete', autoOpenIsOn);
+    }
+
+    /*
+     * The userscript rebuilds its menu when Auto-open changes, so watch the
+     * real menu instead of maintaining a second copy of the setting here.
+     */
+    const watchMenu = new MutationObserver(updateTutorialProgress);
+
+    watchMenu.observe(menuCommands, {
+      childList: true,
+      subtree: true,
+    });
+
+    updateTutorialProgress();
+
+
+    /* --- Adding sections on demand ----------------------------------- */
+
+    /*
+     * Built detached, then appended, the way a real site would do it, so
+     * the userscript's observer sees it arrive as a new node.
+     */
+    function makeSection(title, body) {
+      const details = document.createElement('details');
+      const summary = document.createElement('summary');
+      const para = document.createElement('p');
+
+      summary.textContent = title;
+      para.textContent = body;
+
+      details.append(summary, para);
+      return details;
+    }
+
+    let added = 0;
+
+    document.getElementById('add').addEventListener('click', () => {
+      added += 1;
+
+      document.getElementById('ondemand').append(makeSection(
+        `Section #${added}, freshly arrived`,
+        'Appended just now. Whether it turned up open depends entirely '
+        + 'on the toggle above. Fashionably late either way.',
+      ));
+    });
+
+
+    /* --- Reset -------------------------------------------------------- */
+
+    document.getElementById('reset').addEventListener('click', () => {
+      window.overlyDetailedDemo.reset();
+    });
+  </script>
+
+</body>
+
+</html>
